@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_enterprise_note/pages/home/home.dart';
+import 'package:flutter_enterprise_note/pages/login/LoginPage.dart';
+import 'package:flutter_enterprise_note/services/authentication/authentication.dart';
 
 void main() {
   runApp(EnterpriseNote());
@@ -10,12 +12,12 @@ class EnterpriseNote extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Enterprise Note',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.grey,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage()
+      home: Authentication.isSignedIn() ? HomePage() : LoginPage()
     );
   }
 }
